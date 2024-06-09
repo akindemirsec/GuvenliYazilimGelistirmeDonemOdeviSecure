@@ -1,6 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['user']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit;
+}
+
+if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
     header('Location: login.php');
     exit;
 }
@@ -24,3 +29,4 @@ $_SESSION['cart'][] = $product;
 $_SESSION['message'] = 'Ürün sepete eklendi.';
 header('Location: index.php');
 exit;
+?>
